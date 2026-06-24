@@ -1,0 +1,693 @@
+@charset "UTF-8";
+
+/* ==========================================================
+   Mixly Japan — DESIGN.md 準拠スタイル
+   公式ブランドの安心感 × 百貨店の上質感 × 令和のクリーンさ
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap");
+
+/* Reset CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+button {
+    cursor: pointer;
+    background: none;
+}
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* ---------------- Design Tokens ---------------- */
+:root {
+    --color-primary: #1A1A2E;
+    --color-primary-light: #2D2D4E;
+    --color-gold: #B8960C;
+    --color-gold-light: #D4AF37;
+    --color-official-badge: #1A3A5C;
+    --color-danger: #C0392B;
+    --color-success: #27AE60;
+    --color-warning: #E67E22;
+    --color-text-primary: #1A1A1A;
+    --color-text-secondary: #5C5C5C;
+    --color-text-tertiary: #9B9B9B;
+    --color-border: #E0DDD8;
+    --color-background: #F8F6F2;
+    --color-surface: #FFFFFF;
+    --color-surface-dark: #F0EDE8;
+
+    --font-heading: "Noto Serif JP", "Georgia", serif;
+    --font-body: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+    --font-price: "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
+
+    --space-xs: 4px;
+    --space-s: 8px;
+    --space-m: 16px;
+    --space-l: 24px;
+    --space-xl: 40px;
+    --space-2xl: 64px;
+    --space-3xl: 96px;
+}
+
+html {
+    word-break: break-all;
+    overflow-wrap: break-word;
+    line-break: strict;
+    hanging-punctuation: first last;
+}
+
+body {
+    background: var(--color-background);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.9;
+    letter-spacing: 0.04em;
+    font-feature-settings: "kern" 1;
+}
+
+a {
+    color: inherit;
+}
+
+/* placeholder box used wherever a real photo/logo is not yet available */
+.wf-ph {
+    background: var(--color-surface-dark);
+    color: var(--color-text-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 12px;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* ---------------- Section Heading ---------------- */
+.section-heading {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+.section-heading .eyebrow {
+    display: block;
+    font-family: var(--font-price);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--color-text-tertiary);
+}
+.section-heading .title {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 400;
+    margin-top: 6px;
+}
+.section-heading .underline {
+    width: 32px;
+    height: 1px;
+    background: var(--color-gold);
+    margin: 14px auto 0;
+}
+
+section[data-screen-label] {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--space-2xl) 40px 0;
+}
+
+/* ---------------- Header / Navigation ---------------- */
+header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+}
+.header-top {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: var(--space-l);
+    padding: 20px 40px;
+}
+.logo {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+.header-search {
+    flex: 0 1 46%;
+    max-width: 46%;
+    margin-left: auto;
+    position: relative;
+}
+.header-search input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 44px;
+    border: 1px solid var(--color-border);
+    border-radius: 22px;
+    padding: 0 44px 0 18px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    background: var(--color-surface);
+}
+.header-search input::placeholder {
+    color: var(--color-text-tertiary);
+}
+.header-search .fa-magnifying-glass {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-tertiary);
+    font-size: 14px;
+}
+.header-icons {
+    display: flex;
+    gap: 22px;
+    flex-shrink: 0;
+}
+.icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    min-width: 44px;
+    text-decoration: none;
+    color: var(--color-text-primary);
+}
+.icon-link i {
+    font-size: 19px;
+}
+.icon-link span {
+    font-size: 10px;
+    color: var(--color-text-secondary);
+}
+nav {
+    border-top: 1px solid var(--color-border);
+}
+nav ul {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    gap: 34px;
+    justify-content: center;
+    padding: 0 40px;
+}
+nav a {
+    display: block;
+    text-decoration: none;
+    color: var(--color-text-primary);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    line-height: 48px;
+}
+nav a:hover {
+    color: var(--color-gold);
+}
+
+/* ---------------- Hero Carousel ---------------- */
+section.hero-carousel {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-surface);
+    max-width: none;
+    margin: 0;
+    padding: var(--space-2xl) 0 0;
+}
+.splide__slide {
+    height: 440px;
+    position: relative;
+    opacity: 0.4;
+    transform: scale(0.9);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.splide__slide.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
+.splide__slide .wf-ph {
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+}
+.hero-caption {
+    position: absolute;
+    left: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.hero-caption .eyebrow {
+    font-family: "Georgia", serif;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--color-text-secondary);
+    margin-bottom: 10px;
+}
+.hero-caption .headline {
+    font-family: var(--font-heading);
+    font-size: 38px;
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--color-text-primary);
+}
+.hero-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-l);
+    margin: var(--space-l) 0;
+}
+.hero-nav-btn {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-primary);
+    font-size: 16px;
+}
+.hero-dots {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.hero-dots button {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    background: rgba(26, 26, 46, 0.25);
+}
+.hero-dots button.is-active {
+    background: var(--color-primary);
+}
+
+/* ---------------- Campaign banners ---------------- */
+.campaign-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-l);
+}
+.campaign-grid a {
+    background: var(--color-surface-dark);
+    aspect-ratio: 4 / 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-l);
+    text-decoration: none;
+    color: var(--color-text-primary);
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* ---------------- Ranking ---------------- */
+.ranking-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-l);
+}
+.ranking-card {
+    background: var(--color-surface);
+    position: relative;
+}
+.rank-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-price);
+    font-weight: 700;
+    font-size: 14px;
+}
+.rank-badge.rank-1 { color: var(--color-gold); }
+.rank-badge.rank-2 { color: #8C8C8C; }
+.rank-badge.rank-3 { color: #A0785A; font-size: 13px; }
+.rank-badge.rank-4, .rank-badge.rank-5 { color: var(--color-text-tertiary); font-size: 13px; }
+.ranking-card .badge-official {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+    background: var(--color-official-badge);
+    color: var(--color-surface);
+    font-size: 10px;
+    padding: 2px 6px;
+}
+.ranking-card .thumb {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+.ranking-card .info {
+    padding: 12px 15px 16px;
+}
+.ranking-card .brand {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+.ranking-card .name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 2px 0 8px;
+}
+.ranking-card .price {
+    font-family: var(--font-price);
+    font-size: 18px;
+    font-weight: 700;
+}
+.ranking-card .stock {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    margin-top: 4px;
+}
+
+/* ---------------- Pick Up ---------------- */
+/* this is the last section before the background turns white (Brand
+   onward), so it gets the same bottom padding as the top padding of
+   the section that follows the colour change */
+section[data-screen-label="Pick Up"] {
+    padding-bottom: var(--space-2xl);
+}
+.pickup-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-l);
+}
+.pickup-item a {
+    display: block;
+    aspect-ratio: 16 / 9;
+}
+.pickup-label {
+    margin-top: var(--space-s);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+/* ---------------- White background zone (Brand 〜 SNS) ---------------- */
+.white-zone {
+    background: var(--color-surface);
+}
+
+/* ---------------- Brand ---------------- */
+.brand-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--space-l);
+}
+.brand-grid a {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    aspect-ratio: 3 / 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    text-align: center;
+    padding: var(--space-m);
+}
+.brand-grid a img {
+    max-width: 78%;
+    max-height: 78%;
+    object-fit: contain;
+}
+
+/* ---------------- Category ---------------- */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: var(--space-m);
+}
+.category-grid a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--color-text-primary);
+}
+.category-grid .eyebrow {
+    font-family: var(--font-price);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--color-text-tertiary);
+}
+.category-grid .thumb {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+}
+.category-grid .label {
+    font-size: 13px;
+    text-align: center;
+}
+/* this is the last section before the background turns to #EFEFEF,
+   so it gets the same bottom padding as the top padding of the section
+   that follows the colour change (the 64px rule applied at every
+   background-colour boundary) */
+section[data-screen-label="Category"] {
+    padding-bottom: var(--space-2xl);
+}
+
+/* ---------------- SNS ---------------- */
+.sns-zone {
+    background: #EFEFEF;
+}
+.sns-section {
+    padding-bottom: var(--space-2xl) !important;
+}
+.sns-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-l);
+}
+.sns-card {
+    background: var(--color-surface);
+    padding: 28px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sns-card .icon-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    color: #FFFFFF;
+}
+.sns-card .icon-box i {
+    font-size: 26px;
+}
+.sns-card.line .icon-box { background: #06C755; }
+.sns-card.x .icon-box { background: #000000; }
+.sns-card.instagram .icon-box { background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF); }
+.sns-card .sns-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.sns-card .sns-sub {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+}
+.sns-card .qr {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 18px;
+    object-fit: contain;
+}
+.sns-card .follow-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 11px 22px;
+    border-radius: 24px;
+    text-decoration: none;
+}
+.sns-card.line .follow-btn { background: #06C755; }
+.sns-card.x .follow-btn { background: #000000; }
+.sns-card.instagram .follow-btn { background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF); }
+
+/* ---------------- Footer ---------------- */
+.site-footer {
+    background: var(--color-primary);
+    color: #FFFFFF;
+}
+.footer-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 56px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.2fr;
+    gap: var(--space-xl);
+}
+.footer-col .footer-heading {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--color-gold);
+    border-left: 2px solid var(--color-gold);
+    padding-left: 8px;
+    margin-bottom: 18px;
+}
+.footer-col .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.75);
+}
+.footer-col .footer-links a {
+    text-decoration: none;
+    color: inherit;
+}
+.footer-contact {
+    background: rgba(255, 255, 255, 0.06);
+    padding: var(--space-l);
+}
+.footer-contact .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 10px;
+}
+.footer-contact .title {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+.footer-contact .phone {
+    font-family: var(--font-price);
+    font-size: 24px;
+    font-weight: 700;
+}
+.footer-contact .hours {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 6px 0 18px;
+}
+.footer-contact .contact-btn {
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 12px 28px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: inherit;
+}
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 20px;
+    text-align: center;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 1023px) {
+    .ranking-grid { grid-template-columns: repeat(3, 1fr); }
+    .campaign-grid { grid-template-columns: repeat(2, 1fr); }
+    .pickup-grid { grid-template-columns: repeat(2, 1fr); }
+    .brand-grid { grid-template-columns: repeat(3, 1fr); }
+    .category-grid {
+        grid-template-columns: none;
+        grid-auto-flow: column;
+        grid-auto-columns: 90px;
+        overflow-x: auto;
+        padding-bottom: var(--space-s);
+    }
+    .sns-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 767px) {
+    .container, section[data-screen-label] { padding-left: 16px; padding-right: 16px; }
+    /* the hero carousel must stay full-bleed (no side padding) at every
+       breakpoint, otherwise Splide measures a narrower box than the
+       actual viewport and the centred slide ends up offset */
+    section.hero-carousel { padding-left: 0; padding-right: 0; }
+    .header-top { flex-wrap: wrap; padding: var(--space-m) 16px; }
+    .header-search { order: 3; flex: 1 1 100%; max-width: 100%; margin-left: 0; }
+    nav ul { gap: var(--space-m); flex-wrap: wrap; padding: var(--space-s) 16px; }
+    body { font-size: 14px; }
+    .splide__slide { height: 300px; }
+    .hero-caption .headline { font-size: 26px; }
+    .ranking-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .campaign-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .pickup-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .brand-grid { grid-template-columns: repeat(2, 1fr); }
+    .category-grid { grid-auto-columns: 80px; }
+    .footer-grid { grid-template-columns: 1fr; }
+}

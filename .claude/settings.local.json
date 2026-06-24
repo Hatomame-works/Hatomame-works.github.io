@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"c:/Users/pemom/Documents/web/12shop/html\")",
+      "Bash(cp \"c:/Users/pemom/Documents/web/12shop/test.html\" \"c:/Users/pemom/Documents/web/12shop/html/index.html\")",
+      "Bash(mkdir -p /tmp/mixly-design-bundle/components /tmp/mixly-design-bundle/docs)"
+    ],
+    "additionalDirectories": [
+      "\\tmp\\mixly-design-bundle"
+    ]
+  }
+}

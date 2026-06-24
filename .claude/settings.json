@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit(**/*.css)",
+      "Edit(**/*.html)",
+      "Write(**/*.css)",
+      "Write(**/*.html)",
+      "Bash(uv run pytest *)",
+      "Bash(uv run python scripts/validate_prompt_yaml.py *)",
+      "Bash(git status *)",
+      "Bash(git diff *)"
+    ],
+    "ask": [
+      "Bash(git push *)",
+      "Bash(gh pr merge *)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Bash(git push origin main)"
+    ]
+  }
+}
