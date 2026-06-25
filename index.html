@@ -12,6 +12,7 @@
     <header>
         <div class="header-top">
             <a href="#" class="logo"><i class="fa-solid fa-bag-shopping"></i>Mixly Japan</a>
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="メニューを開く"><i class="fa-solid fa-bars"></i></button>
             <div class="header-search">
                 <input type="text" placeholder="商品を検索する">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -36,6 +37,45 @@
             </ul>
         </nav>
     </header>
+
+    <!-- ============ MOBILE MENU (hamburger / footer content mirrored) ============ -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="メニューを閉じる"><i class="fa-solid fa-xmark"></i></button>
+        <div class="mobile-menu-section">
+            <p class="mobile-menu-heading">CATEGORY</p>
+            <a href="#">アパレル</a>
+            <a href="#">インテリア</a>
+            <a href="#">コスメ</a>
+            <a href="#">ベビー＆キッズ</a>
+            <a href="#">フード＆スイーツ</a>
+            <a href="#">ファッション・スポーツ</a>
+            <a href="#">ライフスタイル</a>
+        </div>
+        <div class="mobile-menu-section">
+            <p class="mobile-menu-heading">MENU</p>
+            <a href="#">新着アイテム</a>
+            <a href="#">特集一覧</a>
+            <a href="#">ランキング</a>
+            <a href="#">ブランド一覧</a>
+            <a href="#">キャンペーン</a>
+            <a href="#">送料情報</a>
+        </div>
+        <div class="mobile-menu-section">
+            <p class="mobile-menu-heading">CUSTOMER SERVICE</p>
+            <a href="#">会員登録／ログイン</a>
+            <a href="#">お気に入り一覧</a>
+            <a href="#">初めての方へ</a>
+            <a href="#">ご利用ガイド</a>
+            <a href="#">よくあるご質問</a>
+            <a href="#">お問い合わせ</a>
+        </div>
+        <div class="mobile-menu-section">
+            <p class="mobile-menu-heading">ORDER &amp; INQUIRY</p>
+            <a href="#">CONTACT FORM</a>
+            <a href="tel:0368202712">03-6820-2712</a>
+        </div>
+    </div>
 
     <!-- ============ HERO CAROUSEL ============ -->
     <section class="hero-carousel" data-screen-label="Hero Carousel">
@@ -340,6 +380,31 @@
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script>
         (function () {
+            /* mobile hamburger menu */
+            var hamburgerBtn = document.getElementById('hamburgerBtn');
+            var mobileMenu = document.getElementById('mobileMenu');
+            var mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            var mobileMenuClose = document.getElementById('mobileMenuClose');
+
+            function openMobileMenu() {
+                mobileMenu.classList.add('is-open');
+                mobileMenuOverlay.classList.add('is-open');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('is-open');
+                mobileMenuOverlay.classList.remove('is-open');
+                document.body.style.overflow = '';
+            }
+            hamburgerBtn.addEventListener('click', openMobileMenu);
+            mobileMenuClose.addEventListener('click', closeMobileMenu);
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeMobileMenu();
+            });
+        })();
+
+        (function () {
             var hero = document.querySelector('.hero-carousel');
             var dots = document.querySelectorAll('#heroDots button');
             var prevBtn = document.querySelector('.hero-nav-btn.prev');
@@ -362,7 +427,9 @@
                 speed: 600,
                 breakpoints: {
                     1023: { padding: { left: '10%', right: '10%' } },
-                    767: { padding: { left: '4%', right: '4%' } }
+                    /* mobile: no peeking neighbours, so just show each
+                       slide at full width with no side padding */
+                    767: { padding: { left: '0%', right: '0%' }, gap: 0 }
                 }
             });
 

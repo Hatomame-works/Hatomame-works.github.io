@@ -262,6 +262,82 @@ nav a:hover {
     color: var(--color-gold);
 }
 
+/* ---------------- Hamburger button (mobile only) ---------------- */
+.hamburger-btn {
+    display: none;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--color-text-primary);
+    border: none;
+    background: none;
+}
+
+/* ---------------- Mobile menu panel (mirrors footer content) ---------------- */
+.mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 26, 46, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease;
+    z-index: 90;
+}
+.mobile-menu-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 82%;
+    max-width: 320px;
+    background: var(--color-surface);
+    z-index: 91;
+    overflow-y: auto;
+    padding: var(--space-l);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+.mobile-menu.is-open {
+    transform: translateX(0);
+}
+.mobile-menu-close {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    font-size: 18px;
+    color: var(--color-text-primary);
+    border: none;
+    background: none;
+}
+.mobile-menu-section {
+    margin-top: var(--space-l);
+}
+.mobile-menu-heading {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--color-gold);
+    border-left: 2px solid var(--color-gold);
+    padding-left: 8px;
+    margin-bottom: var(--space-s);
+}
+.mobile-menu-section a {
+    display: block;
+    padding: 12px 0;
+    font-size: 14px;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-border);
+}
+
 /* ---------------- Hero Carousel ---------------- */
 section.hero-carousel {
     position: relative;
@@ -684,12 +760,18 @@ section[data-screen-label="Category"] {
     /* the hero carousel must stay full-bleed (no side padding) at every
        breakpoint, otherwise Splide measures a narrower box than the
        actual viewport and the centred slide ends up offset */
-    section.hero-carousel { padding-left: 0; padding-right: 0; }
+    section.hero-carousel { padding-left: 0; padding-right: 0; padding-top: 20px; }
     .header-top { flex-wrap: wrap; padding: var(--space-m) 16px; }
-    .header-search { order: 3; flex: 1 1 100%; max-width: 100%; margin-left: 0; }
-    nav ul { gap: var(--space-m); flex-wrap: wrap; padding: var(--space-s) 16px; }
+    .hamburger-btn { display: flex; order: 1; margin-left: auto; }
+    .header-search { order: 2; flex: 1 1 100%; max-width: 100%; margin-left: 0; }
+    .header-icons { order: 3; flex: 1 1 100%; justify-content: center; }
+    /* the category links row is now reachable from the hamburger menu instead */
+    nav { display: none; }
     body { font-size: 14px; }
-    .splide__slide { height: 300px; }
+    /* no neighbouring slides peek at this width, so the "shrink the
+       inactive slides" zoom effect has nothing to relate to — just show
+       every slide at full size and let it scroll in normally */
+    .splide__slide { height: 300px; opacity: 1; transform: none; }
     .hero-caption .headline { font-size: 26px; }
     .ranking-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .campaign-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
