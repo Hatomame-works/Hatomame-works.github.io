@@ -707,36 +707,48 @@ section[data-screen-label="Category"] {
 .footer-contact {
     background: rgba(255, 255, 255, 0.06);
     padding: var(--space-l);
+    text-align: center;
+    /* .footer-grid stretches every column to match the tallest one
+       (CATEGORY, with 7 links) by default, so this box ends up taller
+       than its own content needs — centre the content vertically
+       inside it instead of leaving the extra space below the button */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .footer-contact .eyebrow {
     font-size: 11px;
     letter-spacing: 0.12em;
     color: rgba(255, 255, 255, 0.5);
-    margin-bottom: 10px;
+    margin-bottom: 14px;
 }
 .footer-contact .title {
     font-family: var(--font-heading);
     font-size: 16px;
-    margin-bottom: 14px;
-}
-.footer-contact .phone {
-    font-family: var(--font-price);
-    font-size: 24px;
-    font-weight: 700;
-}
-.footer-contact .hours {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.5);
-    margin: 6px 0 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    white-space: nowrap;
 }
 .footer-contact .contact-btn {
     display: inline-block;
     border: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 12px 28px;
-    font-size: 12px;
+    padding: 14px 32px;
+    font-size: 13px;
     letter-spacing: 0.06em;
     text-decoration: none;
     color: inherit;
+}
+.footer-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-l);
+    padding: var(--space-xl) var(--space-l);
+}
+.footer-brand-logo {
+    height: 72px;
+    width: auto;
+    object-fit: contain;
 }
 .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.12);
