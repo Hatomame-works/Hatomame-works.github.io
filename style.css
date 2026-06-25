@@ -348,7 +348,9 @@ section.hero-carousel {
     padding: var(--space-2xl) 0 0;
 }
 .splide__slide {
-    height: 440px;
+    /* matches the 1600x900 (16:9) source images exactly, so
+       object-fit: cover never needs to crop anything */
+    aspect-ratio: 16 / 9;
     position: relative;
     opacity: 0.4;
     transform: scale(0.9);
@@ -363,25 +365,10 @@ section.hero-carousel {
     height: 100%;
     font-size: 15px;
 }
-.hero-caption {
-    position: absolute;
-    left: 8%;
-    top: 50%;
-    transform: translateY(-50%);
-}
-.hero-caption .eyebrow {
-    font-family: "Georgia", serif;
-    font-size: 13px;
-    letter-spacing: 0.15em;
-    color: var(--color-text-secondary);
-    margin-bottom: 10px;
-}
-.hero-caption .headline {
-    font-family: var(--font-heading);
-    font-size: 38px;
-    font-weight: 300;
-    line-height: 1.4;
-    color: var(--color-text-primary);
+.hero-slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .hero-controls {
     display: flex;
@@ -483,6 +470,7 @@ section.hero-carousel {
 .ranking-card .thumb {
     width: 100%;
     aspect-ratio: 1 / 1;
+    object-fit: cover;
 }
 .ranking-card .info {
     padding: 12px 15px 16px;
@@ -784,8 +772,7 @@ section[data-screen-label="Category"] {
     /* no neighbouring slides peek at this width, so the "shrink the
        inactive slides" zoom effect has nothing to relate to — just show
        every slide at full size and let it scroll in normally */
-    .splide__slide { height: 300px; opacity: 1; transform: none; }
-    .hero-caption .headline { font-size: 26px; }
+    .splide__slide { opacity: 1; transform: none; }
     .ranking-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
     .campaign-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
     .pickup-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
