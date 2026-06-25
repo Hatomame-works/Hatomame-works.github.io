@@ -55,6 +55,13 @@ img {
     display: block;
     max-width: 100%;
 }
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
 
 /* ---------------- Design Tokens ---------------- */
 :root {
