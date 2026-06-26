@@ -447,7 +447,7 @@ section.hero-carousel {
 }
 .rank-badge {
     position: absolute;
-    top: 0;
+    top: -3px;
     left: 8px;
     z-index: 2;
     width: 26px;
