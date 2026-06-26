@@ -345,7 +345,7 @@ section.hero-carousel {
     background: var(--color-surface);
     max-width: none;
     margin: 0;
-    padding: var(--space-2xl) 0 0;
+    padding: 32px 0 0;
 }
 .splide__slide {
     /* the aspect-ratio property isn't reliably supported on every real
@@ -769,7 +769,7 @@ section[data-screen-label="Category"] {
     /* the hero carousel must stay full-bleed (no side padding) at every
        breakpoint, otherwise Splide measures a narrower box than the
        actual viewport and the centred slide ends up offset */
-    section.hero-carousel { padding-left: 0; padding-right: 0; padding-top: 20px; }
+    section.hero-carousel { padding-left: 0; padding-right: 0; padding-top: 0; }
     .header-top { flex-wrap: wrap; padding: var(--space-m) 16px; }
     .hamburger-btn { display: flex; order: 1; margin-left: auto; }
     .header-search { order: 2; flex: 1 1 100%; max-width: 100%; margin-left: 0; }
