@@ -447,25 +447,27 @@ section.hero-carousel {
 }
 .rank-badge {
     position: absolute;
-    top: 8px;
+    top: 0;
     left: 8px;
     z-index: 2;
     width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    height: 32px;
+    /* ribbon/flag shape: rectangular top, V-notch cut into the bottom */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
+    background: var(--color-text-tertiary);
+    color: var(--color-surface);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    padding-top: 4px;
     font-family: var(--font-price);
     font-weight: 700;
     font-size: 14px;
 }
-.rank-badge.rank-1 { color: var(--color-gold); }
-.rank-badge.rank-2 { color: #8C8C8C; }
-.rank-badge.rank-3 { color: #A0785A; font-size: 13px; }
-.rank-badge.rank-4, .rank-badge.rank-5 { color: var(--color-text-tertiary); font-size: 13px; }
+.rank-badge.rank-1 { background: var(--color-gold); }
+.rank-badge.rank-2 { background: var(--color-primary); }
+.rank-badge.rank-3 { background: #A0785A; font-size: 13px; }
+.rank-badge.rank-4, .rank-badge.rank-5 { font-size: 13px; }
 .ranking-card .badge-official {
     position: absolute;
     top: 8px;
