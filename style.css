@@ -579,12 +579,6 @@ section[data-screen-label="Pick Up"] {
     color: var(--color-text-primary);
     min-width: 0;
 }
-.category-grid .eyebrow {
-    font-family: var(--font-price);
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    color: var(--color-text-tertiary);
-}
 .category-grid .thumb {
     width: 100%;
     aspect-ratio: 1 / 1;
