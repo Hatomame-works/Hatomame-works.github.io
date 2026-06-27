@@ -420,15 +420,27 @@ section.hero-carousel {
     gap: var(--space-l);
 }
 .campaign-grid a {
+    /* square (1:1), via the same padding-bottom trick used elsewhere
+       so it's safe on real mobile Safari (see aspect-ratio note above) */
+    display: block;
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
     background: var(--color-surface-dark);
-    aspect-ratio: 4 / 5;
+    text-decoration: none;
+    color: var(--color-text-primary);
+}
+.campaign-grid a span {
+    /* flex centering doesn't reliably centre within a height:0 box
+       (browsers lay it out against the unclamped 0, not the rendered
+       padding height), so position the label absolutely instead */
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 var(--space-l);
     text-align: center;
-    padding: var(--space-l);
-    text-decoration: none;
-    color: var(--color-text-primary);
     font-family: var(--font-heading);
     font-size: 20px;
     font-weight: 400;
@@ -546,17 +558,39 @@ section[data-screen-label="New Brand"] {
     padding-bottom: var(--space-2xl);
 }
 .brand-banner-carousel #brandSplide .splide__slide {
+    /* the generic .splide__slide rule (above) was written for the
+       hero's single-slide 16:9 loop and sets height:0 + a 56.25%
+       padding-bottom + a shrink/fade for inactive slides — none of
+       that applies to this equal-cards-side-by-side carousel, so
+       reset all of it here */
+    height: auto;
+    padding-bottom: 0;
+    opacity: 1;
+    transform: none;
+}
+.brand-banner-carousel #brandSplide .splide__slide a {
     /* 4:3 ratio, using the same padding-bottom technique as the hero
        carousel (height:0 + padding-bottom) since the aspect-ratio
-       property isn't reliably supported on every real mobile Safari */
+       property isn't reliably supported on every real mobile Safari.
+       This lives on the <a> (a child of the slide) rather than the
+       slide itself, because Splide manages slide/list height directly
+       in perPage>1 mode and fights a height:0 set on the slide. */
+    display: block;
     position: relative;
     width: 100%;
     height: 0;
     padding-bottom: 75%;
 }
-.brand-banner-carousel #brandSplide .wf-ph {
+.brand-banner-carousel #brandSplide .splide__slide a span {
+    /* same reason as the campaign banners: centre via absolute
+       positioning, not flex, since flex doesn't centre reliably
+       inside a height:0 box */
     position: absolute;
     inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 .brand-banner-more {
     display: flex;
