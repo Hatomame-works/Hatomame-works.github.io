@@ -592,25 +592,6 @@ section[data-screen-label="New Brand"] {
     justify-content: center;
     text-align: center;
 }
-.brand-banner-more {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-s);
-    width: max-content;
-    margin: var(--space-l) auto 0;
-    background: var(--color-primary);
-    color: var(--color-surface);
-    font-size: 13px;
-    letter-spacing: 0.06em;
-    text-decoration: none;
-    padding: 14px 32px;
-    border-radius: 999px;
-}
-.brand-banner-more i {
-    font-size: 11px;
-}
-
 /* ---------------- White background zone (Brand 〜 SNS) ---------------- */
 .white-zone {
     background: var(--color-surface);
