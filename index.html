@@ -100,7 +100,7 @@
                         <img class="hero-slide-img" src="images/hero-04-brand.jpg" alt="">
                     </li>
                     <li class="splide__slide">
-                        <img class="hero-slide-img" src="images/hero-05-gift.jpg" alt="">
+                        <img class="hero-slide-img" src="images/hero-05-gift.png" alt="">
                     </li>
                 </ul>
             </div>
@@ -224,7 +224,7 @@
                 <p class="pickup-label">人気ブランド集めました</p>
             </div>
             <div class="pickup-item">
-                <a href="#"><img src="images/hero-05-gift.jpg" alt=""></a>
+                <a href="#"><img src="images/hero-05-gift.png" alt=""></a>
                 <p class="pickup-label">大切な人へ、贈り物を。</p>
             </div>
             <div class="pickup-item">
@@ -240,6 +240,27 @@
                 <p class="pickup-label">初任給・ボーナス特集</p>
             </div>
         </div>
+    </section>
+
+    <!-- ============ NEW BRAND (banner carousel) ============ -->
+    <section class="brand-banner-carousel" data-screen-label="New Brand">
+        <div class="section-heading">
+            <span class="eyebrow">NEW BRAND</span>
+            <span class="title">新着ブランド</span>
+            <div class="underline"></div>
+        </div>
+        <div id="brandSplide" class="splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide"><a href="#" class="wf-ph">ブランドバナー 01</a></li>
+                    <li class="splide__slide"><a href="#" class="wf-ph">ブランドバナー 02</a></li>
+                    <li class="splide__slide"><a href="#" class="wf-ph">ブランドバナー 03</a></li>
+                    <li class="splide__slide"><a href="#" class="wf-ph">ブランドバナー 04</a></li>
+                    <li class="splide__slide"><a href="#" class="wf-ph">ブランドバナー 05</a></li>
+                </ul>
+            </div>
+        </div>
+        <a href="#" class="brand-banner-more">もっと見る<i class="fa-solid fa-chevron-right"></i></a>
     </section>
 
     <div class="white-zone">
@@ -441,8 +462,9 @@
                track by exactly the error every time a move settles, so
                the visual result is always correct regardless of what
                Splide's internal arithmetic computed. */
-            var list = document.querySelector('.splide__list');
-            var allSlides = document.querySelectorAll('.splide__slide');
+            var heroEl = document.getElementById('heroSplide');
+            var list = heroEl.querySelector('.splide__list');
+            var allSlides = heroEl.querySelectorAll('.splide__slide');
             function forceCenter() {
                 var heroRect = hero.getBoundingClientRect();
                 var heroCenter = heroRect.left + heroRect.width / 2;
@@ -500,6 +522,85 @@
                 if (e.persisted) {
                     splide.refresh();
                     forceCenter();
+                }
+            });
+        })();
+
+        /* New Brand banner carousel — same Splide setup as the hero,
+           just a 4:3 ratio instead of 16:9 and no arrow/dot controls
+           (a single "もっと見る" link sits below it instead). */
+        (function () {
+            var brandSplide = new Splide('#brandSplide', {
+                type: 'loop',
+                perPage: 1,
+                padding: { left: '21%', right: '21%' },
+                gap: '24px',
+                arrows: false,
+                pagination: false,
+                autoplay: true,
+                interval: 4000,
+                pauseOnHover: false,
+                pauseOnFocus: false,
+                speed: 600,
+                breakpoints: {
+                    1023: { padding: { left: '10%', right: '10%' } },
+                    767: { padding: { left: '4%', right: '4%' } }
+                }
+            });
+
+            /* same real-position-measurement correction as the hero
+               carousel — see the hero IIFE above for why this is needed. */
+            var brandEl = document.getElementById('brandSplide');
+            var brandList = brandEl.querySelector('.splide__list');
+            var brandSlides = brandEl.querySelectorAll('.splide__slide');
+            function forceBrandCenter() {
+                var elRect = brandEl.getBoundingClientRect();
+                var elCenter = elRect.left + elRect.width / 2;
+                var closest = null;
+                var closestRect = null;
+                var closestDist = Infinity;
+                for (var i = 0; i < brandSlides.length; i++) {
+                    var r = brandSlides[i].getBoundingClientRect();
+                    var dist = Math.abs((r.left + r.width / 2) - elCenter);
+                    if (dist < closestDist) {
+                        closestDist = dist;
+                        closest = brandSlides[i];
+                        closestRect = r;
+                    }
+                }
+                if (!closest) return;
+                var delta = elCenter - (closestRect.left + closestRect.width / 2);
+                if (Math.abs(delta) < 0.5) return;
+                var m = /matrix\([^,]+,[^,]+,[^,]+,[^,]+,\s*([-\d.]+)/.exec(getComputedStyle(brandList).transform);
+                var currentX = m ? parseFloat(m[1]) : 0;
+                brandList.style.transition = 'none';
+                brandList.style.transform = 'translateX(' + (currentX + delta) + 'px)';
+                brandList.getBoundingClientRect();
+                brandList.style.transition = '';
+            }
+
+            brandSplide.mount();
+            brandSplide.on('moved', forceBrandCenter);
+            requestAnimationFrame(forceBrandCenter);
+            window.addEventListener('load', forceBrandCenter);
+            var brandResizeTimer;
+            window.addEventListener('resize', function () {
+                clearTimeout(brandResizeTimer);
+                brandResizeTimer = setTimeout(function () {
+                    brandSplide.refresh();
+                    forceBrandCenter();
+                }, 150);
+            });
+            document.addEventListener('visibilitychange', function () {
+                if (!document.hidden) {
+                    brandSplide.refresh();
+                    forceBrandCenter();
+                }
+            });
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    brandSplide.refresh();
+                    forceBrandCenter();
                 }
             });
         })();
