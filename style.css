@@ -508,12 +508,6 @@ section.hero-carousel {
 }
 
 /* ---------------- Pick Up ---------------- */
-/* this is the last section before the background turns white (Brand
-   onward), so it gets the same bottom padding as the top padding of
-   the section that follows the colour change */
-section[data-screen-label="Pick Up"] {
-    padding-bottom: var(--space-2xl);
-}
 .pickup-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -545,6 +539,12 @@ section[data-screen-label="Pick Up"] {
 }
 
 /* ---------------- New Brand banner carousel ---------------- */
+/* this is now the last section before the background turns white
+   (Brand onward), so it gets the same bottom padding as the top
+   padding of the section that follows the colour change */
+section[data-screen-label="New Brand"] {
+    padding-bottom: var(--space-2xl);
+}
 .brand-banner-carousel #brandSplide .splide__slide {
     /* 4:3 ratio, using the same padding-bottom technique as the hero
        carousel (height:0 + padding-bottom) since the aspect-ratio
