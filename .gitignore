@@ -1,4 +1,8 @@
-design/Mixly Japan ショップページ.html
 item_image/
 docs/image-checklist.md
-design/mixly_sozai.ai
+
+# design/ is a working/scratch folder for source assets (.ai files,
+# screenshots, reference images, etc.) — exclude everything in it
+# except the design spec doc, which we do want versioned.
+design/*
+!design/DESIGN.md
