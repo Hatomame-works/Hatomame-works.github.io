@@ -354,7 +354,7 @@ header.is-scrolled {
     border: 1px solid var(--color-border);
     border-radius: 22px;
     padding: 0 44px 0 18px;
-    font-size: 14px;
+    font-size: 16px; /* 16px未満だとiOS Safariが自動ズームするため */
     font-family: inherit;
     outline: none;
     background: var(--color-background);
