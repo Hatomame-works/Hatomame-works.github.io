@@ -109,6 +109,7 @@ body {
     line-height: 1.9;
     letter-spacing: 0.04em;
     font-feature-settings: "kern" 1;
+    padding-top: 130px; /* header-top + nav の合計高さ。ズレる場合はここを調整 */
 }
 
 a {
@@ -167,6 +168,16 @@ section[data-screen-label] {
 header {
     background: var(--color-surface);
     border-bottom: 1px solid var(--color-border);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition:
+        margin        0.35s cubic-bezier(0.23, 1, 0.32, 1),
+        width         0.35s cubic-bezier(0.23, 1, 0.32, 1),
+        border-radius 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+        box-shadow    0.35s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .header-top {
     max-width: 1280px;
@@ -241,6 +252,7 @@ header {
 nav {
     background: var(--color-background);
     border-top: 1px solid var(--color-border);
+    transition: border-radius 0.35s cubic-bezier(0.23, 1, 0.32, 1);
 }
 nav ul {
     max-width: 1280px;
@@ -261,6 +273,20 @@ nav a {
 }
 nav a:hover {
     color: var(--color-gold);
+}
+
+/* ---------------- Floating Rounded Header (丸井スタイル) ---------------- */
+header.is-scrolled {
+    margin: 12px 24px 0;
+    width: calc(100% - 48px);
+    border-radius: 16px 16px 0 0;
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.10),
+        0 1px 4px  rgba(0, 0, 0, 0.06);
+    border-bottom-color: transparent;
+}
+header.is-scrolled nav {
+    border-radius: 0 0 16px 16px;
 }
 
 /* ---------------- Hamburger button (mobile only) ---------------- */
@@ -837,7 +863,15 @@ section[data-screen-label="Category"] {
     .header-icons { order: 3; flex: 1 1 100%; justify-content: center; }
     /* the category links row is now reachable from the hamburger menu instead */
     nav { display: none; }
-    body { font-size: 14px; }
+    body { font-size: 14px; padding-top: 165px; /* モバイルはヘッダーが3行になるため調整 */ }
+    header.is-scrolled {
+        margin: 8px 12px 0;
+        width: calc(100% - 24px);
+        border-radius: 12px 12px 0 0;
+    }
+    header.is-scrolled nav {
+        border-radius: 0 0 12px 12px;
+    }
     /* no neighbouring slides peek at this width, so the "shrink the
        inactive slides" zoom effect has nothing to relate to — just show
        every slide at full size and let it scroll in normally */

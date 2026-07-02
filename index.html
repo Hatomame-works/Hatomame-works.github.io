@@ -294,7 +294,7 @@
             <div class="underline"></div>
         </div>
         <div class="category-grid">
-            <a href="#"><div class="thumb"><img src="images/cat01.jpg" alt=""></div><span class="label">アパレル</span></a>
+            <a href="#"><div class="thumb"><img src="images/cat01.png" alt=""></div><span class="label">アパレル</span></a>
             <a href="#"><div class="thumb"><img src="images/cat02.png" alt=""></div><span class="label">インテリア</span></a>
             <a href="#"><div class="thumb"><img src="images/cat03.png" alt=""></div><span class="label">コスメ</span></a>
             <a href="#"><div class="thumb"><img src="images/cat04.png" alt=""></div><span class="label">ベビー＆キッズ</span></a>
@@ -549,6 +549,18 @@
                 }
             });
             brandSplide.mount();
+        })();
+
+        // ---- Floating Header: スクロールで角丸・浮遊化 ----
+        (function () {
+            const header = document.querySelector('header');
+            if (!header) return;
+            const THRESHOLD = 20;
+            function updateHeader() {
+                header.classList.toggle('is-scrolled', window.scrollY > THRESHOLD);
+            }
+            window.addEventListener('scroll', updateHeader, { passive: true });
+            updateHeader();
         })();
     </script>
 </body>
