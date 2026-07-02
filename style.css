@@ -279,14 +279,12 @@ nav a:hover {
 header.is-scrolled {
     margin: 12px 24px 0;
     width: calc(100% - 48px);
-    border-radius: 16px 16px 0 0;
+    border-radius: 16px;
+    overflow: hidden;
     box-shadow:
         0 4px 20px rgba(0, 0, 0, 0.10),
         0 1px 4px  rgba(0, 0, 0, 0.06);
     border-bottom-color: transparent;
-}
-header.is-scrolled nav {
-    border-radius: 0 0 16px 16px;
 }
 
 /* ---------------- Hamburger button (mobile only) ---------------- */
@@ -310,7 +308,7 @@ header.is-scrolled nav {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.25s ease;
-    z-index: 90;
+    z-index: 1009;
 }
 .mobile-menu-overlay.is-open {
     opacity: 1;
@@ -324,7 +322,7 @@ header.is-scrolled nav {
     width: 82%;
     max-width: 320px;
     background: var(--color-surface);
-    z-index: 91;
+    z-index: 1010;
     overflow-y: auto;
     padding: var(--space-l);
     transform: translateX(100%);
@@ -344,6 +342,30 @@ header.is-scrolled nav {
     color: var(--color-text-primary);
     border: none;
     background: none;
+}
+.mobile-menu-search {
+    position: relative;
+    margin-top: var(--space-m);
+}
+.mobile-menu-search input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 44px;
+    border: 1px solid var(--color-border);
+    border-radius: 22px;
+    padding: 0 44px 0 18px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    background: var(--color-background);
+}
+.mobile-menu-search .fa-magnifying-glass {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-tertiary);
+    font-size: 14px;
 }
 .mobile-menu-section {
     margin-top: var(--space-l);
@@ -859,18 +881,15 @@ section[data-screen-label="Category"] {
     section.hero-carousel { padding-left: 0; padding-right: 0; padding-top: 0; }
     .header-top { flex-wrap: wrap; padding: var(--space-m) 16px; }
     .hamburger-btn { display: flex; order: 1; margin-left: auto; }
-    .header-search { order: 2; flex: 1 1 100%; max-width: 100%; margin-left: 0; }
-    .header-icons { order: 3; flex: 1 1 100%; justify-content: center; }
+    .header-search { display: none; }
+    .header-icons { order: 2; flex: 1 1 100%; justify-content: center; }
     /* the category links row is now reachable from the hamburger menu instead */
     nav { display: none; }
     body { font-size: 14px; padding-top: 165px; /* モバイルはヘッダーが3行になるため調整 */ }
     header.is-scrolled {
         margin: 8px 12px 0;
         width: calc(100% - 24px);
-        border-radius: 12px 12px 0 0;
-    }
-    header.is-scrolled nav {
-        border-radius: 0 0 12px 12px;
+        border-radius: 12px;
     }
     /* no neighbouring slides peek at this width, so the "shrink the
        inactive slides" zoom effect has nothing to relate to — just show
